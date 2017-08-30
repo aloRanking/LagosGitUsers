@@ -69,6 +69,7 @@ public class UserProfile extends AppCompatActivity implements Animation.Animatio
             });
 
 
+            // gets the image n rotate
             imageView = (ImageView) findViewById(R.id.user_profile_pic);
 
             Picasso.with(context)
