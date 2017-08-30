@@ -27,13 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String TAG = MainActivity.class.getSimpleName();
 
-    private final String GITHUB_SEARCH_API = "https://api.github.com/search/users";
-    private final String GITHUB_SEARCH_API_DEFAULT_QUERY_STRING = "q=location:lagos+type:user+language:java&order=desc&sort=repositories&per_page=50&";
-    private final String GITHUB_ACCESS_TOKEN ="88806bb44e50b9885e592c29475a1dd610dbc41c";
-    private final String GITHUB_SEARCH_API_DEFAULT_URL = GITHUB_SEARCH_API +
-            "?access_token=" + GITHUB_ACCESS_TOKEN + "&" + GITHUB_SEARCH_API_DEFAULT_QUERY_STRING;
-
-
     private static String url = "https://api.github.com/search/users?q=language:java+location:lagos&per_page=225&";
     private ProgressDialog pDialog;
     private RecyclerView recyclerView;
@@ -41,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private List<ListItem> listItems;
     private Button retryButton;
 
-    // URL to get contacts JSON
-
-    //private ArrayList<JSONObject> profileList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,19 +51,18 @@ public class MainActivity extends AppCompatActivity {
         loadRecyclerViewData();
 
 
-
-
-        //https://api.github.com/search/users?q=language:java+location:lagos
-
-
     }
 
     private void loadRecyclerViewData(){
+        //hides the retryButton
         retryButton.setVisibility(View.GONE);
+
+        //progress dialog
         pDialog = new ProgressDialog(MainActivity.this);
         pDialog.setMessage("Please wait...");
         pDialog.setCancelable(false);
         pDialog.show();
+
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
@@ -113,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        // if it fails to get information
+                        //make a toast, show retryButton
                         pDialog.dismiss();
                         Toast.makeText(getApplicationContext(), "Unable to retrieve information ", Toast.LENGTH_SHORT)
                                 .show();
@@ -126,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+
+        //making the request call using volley
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);

@@ -9,7 +9,7 @@ public class ListItem {
     private String userName;
     private String gitHubProfile;
     private String imageUrl;
-    //git hub Acces tooken88806bb44e50b9885e592c29475a1dd610dbc41c
+
 
     public ListItem(String userName, String gitHubProfile, String imageUrl) {
         this.userName = userName;

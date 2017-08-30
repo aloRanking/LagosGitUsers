@@ -41,8 +41,8 @@ public class UserProfile extends AppCompatActivity implements Animation.Animatio
         }
         else{
 
-            String userId = profile.getString("userId");
-            final String userUrl = profile.getString("userProfileUrl");
+             userId = profile.getString("userId");
+             userUrl = profile.getString("userProfileUrl");
             String imageUrl = profile.getString("profilePicture");
 
             animRightLeft = AnimationUtils.loadAnimation(this,

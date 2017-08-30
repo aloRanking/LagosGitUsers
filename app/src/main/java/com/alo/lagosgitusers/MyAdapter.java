@@ -41,6 +41,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ListItem listItem = listItems.get(position);
 
         holder.textView.setText(listItem.getUserName());
+
+        //used picasso library to convert the image url to an actual image
        Picasso.with(context)
                 .load(listItem.getImageUrl())
                 .into(holder.imageView);
